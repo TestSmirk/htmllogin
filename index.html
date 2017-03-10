@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this is time</title>
+    <script src="jquery-3.1.1.js"></script>
+
+</head>
+<body>
+<input type="text" id="username">
+<input type="password" id="password">
+<button id="button1" title="this is a button">button</button>
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#button1').bind('click', function () {
+//            console.log($('#username').val());
+//            console.log($('#password').val());
+//            console.log(1);
+//            $.ajax({
+//                url: "http://localhost:8080/login",
+//                method: 'POST',
+//                data: {"username": $('#username').value, "password": $('#password').value},
+//                dataType: "json"
+//
+//            }).done(function (e) {
+//                console.log(e);
+//
+//            });
+//
+
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://localhost:8080/login",
+                "method": "POST",
+                "headers": {
+                    "content-type": "application/json",
+                    "cache-control": "no-cache",
+                    "postman-token": "112d76f4-3226-f979-5ece-60ab6b167aa1"
+                },
+                "processData": false,
+                "data": "{\n\t\n\t\"usernmae\":\"asdad\"\n}"
+            }
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+        })
+    })
+</script>
+</body>
+
+</html>
