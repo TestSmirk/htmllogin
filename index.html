@@ -15,38 +15,26 @@
     $(function () {
 
         $('#button1').bind('click', function () {
-//            console.log($('#username').val());
-//            console.log($('#password').val());
-//            console.log(1);
-//            $.ajax({
-//                url: "http://localhost:8080/login",
-//                method: 'POST',
-//                data: {"username": $('#username').value, "password": $('#password').value},
-//                dataType: "json"
-//
-//            }).done(function (e) {
-//                console.log(e);
-//
-//            });
-//
-
+            var username = $('#username').val();
+            var password = $('#password').val();
+            console.log(username + " " + password);
 
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "http://localhost:8080/login",
+                "url": "http://localhost:8080/login?username=" + username + "&password=" + password,
                 "method": "POST",
                 "headers": {
-                    "content-type": "application/json",
+                    "content-type": "application/x-www-form-urlencoded",
                     "cache-control": "no-cache",
-                    "postman-token": "112d76f4-3226-f979-5ece-60ab6b167aa1"
-                },
-                "processData": false,
-                "data": "{\n\t\n\t\"usernmae\":\"asdad\"\n}"
+                    "postman-token": "4138c7a9-e5be-a925-9bfb-2cf128e52a3a"
+                }
             }
 
             $.ajax(settings).done(function (response) {
-                console.log(response);
+                if (response.code === 1) {
+                    console.log(123);
+                }
             });
         })
     })
